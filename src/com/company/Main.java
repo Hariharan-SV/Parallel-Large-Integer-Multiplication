@@ -1,4 +1,5 @@
 package com.company;
+import java.math.BigInteger;
 import java.util.Random;
 import java.time.Duration;
 import java.time.Instant;
@@ -121,22 +122,22 @@ public class Main {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(karatsuba(200, 200));
+        System.out.println(karatsuba(200200200200L, 200200200200L));
         long end = System.currentTimeMillis();
         long timeElapsed = end-start;
         System.out.println("Time : "+ timeElapsed +" milliseconds");
 
         start = System.currentTimeMillis();
-        System.out.println(karatsuba(12345, 6789));
+        System.out.println(new BigInteger("200200200200").multiply(new BigInteger("200200200200")));
         end = System.currentTimeMillis();
         timeElapsed = end-start;
         System.out.println("Time : "+ timeElapsed +" milliseconds");
 
-        start = System.currentTimeMillis();
-        System.out.println(karatsuba(2358925, 1259174));
-        end = System.currentTimeMillis();
-        timeElapsed = end-start;
-        System.out.println("Time : "+ timeElapsed +" milliseconds");
+//        start = System.currentTimeMillis();
+//        System.out.println(karatsuba(2358925, 1259174));
+//        end = System.currentTimeMillis();
+//        timeElapsed = end-start;
+//        System.out.println("Time : "+ timeElapsed +" milliseconds");
     }
 
 }
