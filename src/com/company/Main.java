@@ -2,6 +2,14 @@ package com.company;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
+//  x = x1*b^m//2 + x0
+//  y = y1*b^m//2 + y0
+//  m = the maximum # of digits
+//  z2 = karatsuba(x1, y1). x1 and y1, the most significant digits, and are the local variables "high".
+//  z0 = karatsuba(x0, y0). x0 and y0, the least significant digits, and are the local variables "low".
+//  z1 = karatsuba(x1+y0, x0+y1) - z0 - z2.
+//  Result: z2 * b^2m	+	z1 * b^m	+	z0
+
 public class Main {
 
   private static class KaratsubaMultiplication extends RecursiveAction {
@@ -294,6 +302,7 @@ public class Main {
        parallelTimeElapsed;
 
     for (int j = 1; j <= noOfProcessors; j++) {
+//      int j = 4;
       pool = new ForkJoinPool (j);
 
       for (int i = 0; i < n; i++) {
@@ -315,6 +324,7 @@ public class Main {
         System.out.println("Parallel Time : "+ parallelTimeElapsed +" nano seconds");
         averageSpeedups[i] = (float)sequentialTimeElapsed/parallelTimeElapsed;
         System.out.println("Speedup : "+ averageSpeedups[i]+"\n");
+        Thread.sleep(100);
       }
 
       float sum = 0;
@@ -325,7 +335,7 @@ public class Main {
       double average = sum / averageSpeedups.length;
       System.out.println("\n\nFor parallelism level:"+j+" , Average speedup : "+average+"\n\n");
 
-      Thread.sleep(4500);
+      Thread.sleep(250);
     }
 
   }
